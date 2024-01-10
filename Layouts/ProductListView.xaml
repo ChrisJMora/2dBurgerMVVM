@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="_2dBurgerMobileApp.Layouts.ProductListView">
+
+    <VerticalStackLayout>
+
+        <Picker x:Name="TypeProductPicker"
+        Title="Select a type"
+        SelectedItem="{Binding SelectedOption}">
+
+            <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>Food</x:String>
+                    <x:String>Combo</x:String>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
+
+        <Picker Title="Select a category"
+        ItemsSource="{Binding Categories}"
+        ItemDisplayBinding="{Binding Name}"
+        SelectedItem="{Binding SelectedCategory}"/>
+
+        <ListView x:Name="ProductList"
+                  RowHeight="80"
+                  ItemsSource="{Binding Products}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+
+                    <ViewCell>
+
+                        <StackLayout Orientation="Vertical">
+                            <Label
+                            Text="{Binding Name}"
+                            VerticalOptions="Start"
+                            FontSize="20"/>
+                            <Label
+                            Text="{Binding Detail}"
+                            VerticalOptions="End"
+                            FontSize="20"/>
+                            <Label
+                            Text="{Binding Price}"
+                            VerticalOptions="End"
+                            FontSize="20"/>
+                        </StackLayout>
+
+                    </ViewCell>
+
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+    </VerticalStackLayout>
+
+
+</ContentView>
